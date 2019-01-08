@@ -3,7 +3,7 @@
 //  FoodPin
 //
 //  Created by Makan Fofana on 1/8/19.
-//  Copyright © 2019 AppCoda. All rights reserved.
+//Copyright © 2019 Makan Fofana. All rights reserved.
 //
 
 import UIKit
