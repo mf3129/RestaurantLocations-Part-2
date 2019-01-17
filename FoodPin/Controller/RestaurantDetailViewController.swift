@@ -8,6 +8,7 @@ import UIKit
 
 class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
     //MARK: Datasource Protocols
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -67,11 +68,24 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         
         navigationItem.largeTitleDisplayMode = .never
         
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = .white
+        
+        tableView.contentInsetAdjustmentBehavior = .never
+        
         headerView.nameLabel.text = restaurant.name
         headerView.typeLabel.text = restaurant.type
         headerView.headerImageView.image = UIImage(named: restaurant.image)
         headerView.heartImageView.isHidden = (restaurant.isVisited) ? false : true
     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        navigationController?.hidesBarsOnSwipe = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
    
