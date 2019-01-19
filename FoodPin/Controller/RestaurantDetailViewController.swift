@@ -6,6 +6,7 @@
 
 import UIKit
 
+
 class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -81,6 +82,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
     
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -88,7 +90,9 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-   
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     /*
     // MARK: - Navigation
 
