@@ -300,6 +300,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="mapView" destination="f8z-fd-8DP" id="STk-9u-vw5"/>
+                                            <segue destination="Ozf-hC-jXz" kind="show" identifier="showMap" id="aR1-r0-8hj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -324,10 +325,10 @@
             </objects>
             <point key="canvasLocation" x="1813.5999999999999" y="150.22488755622189"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="0Vq-A5-FdY">
             <objects>
-                <viewController id="Ozf-hC-jXz" sceneMemberID="viewController">
+                <viewController id="Ozf-hC-jXz" customClass="MapViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LDz-RQ-Iwq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -339,12 +340,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="A7g-3E-MQt" firstAttribute="leading" secondItem="8lR-cp-oHe" secondAttribute="leading" id="8xo-Mm-iES"/>
-                            <constraint firstItem="A7g-3E-MQt" firstAttribute="bottom" secondItem="8lR-cp-oHe" secondAttribute="bottom" id="baY-Zz-1Uq"/>
+                            <constraint firstItem="A7g-3E-MQt" firstAttribute="bottom" secondItem="LDz-RQ-Iwq" secondAttribute="bottom" id="baY-Zz-1Uq"/>
                             <constraint firstItem="A7g-3E-MQt" firstAttribute="top" secondItem="LDz-RQ-Iwq" secondAttribute="top" id="nlN-DY-WBf"/>
                             <constraint firstItem="A7g-3E-MQt" firstAttribute="trailing" secondItem="8lR-cp-oHe" secondAttribute="trailing" id="stN-10-sM2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8lR-cp-oHe"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="A7g-3E-MQt" id="LgK-Qf-sMF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Kb-aS-h4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

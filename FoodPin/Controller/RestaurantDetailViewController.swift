@@ -60,6 +60,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailMapCell.self), for: indexPath) as! RestaurantDetailMapCell
             
+            cell.configure(location: restaurant.location)
             cell.selectionStyle = .none
             
             return cell
@@ -118,4 +119,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
     }
     */
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMap" {
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.restaurant = restaurant
+        }
+    }
 }
