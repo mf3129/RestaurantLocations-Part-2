@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -18,10 +18,20 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let scale = MKScaleView(mapView: mapView)
+        scale.scaleVisibility = .visible // always visible
+        view.addSubview(scale)
+        
+        mapView.delegate = self
+        mapView.showsCompass = true
+        mapView.showsScale = true
+        mapView.showsTraffic = true
+        
 
         let geoCoder = CLGeocoder()
         
-    geoCoder.geocodeAddressString(restaurant.location) { (placemarks, error) in
+        geoCoder.geocodeAddressString(restaurant.location) { (placemarks, error) in
             
         if let error = error {
             print(error)
@@ -44,10 +54,28 @@ class MapViewController: UIViewController {
                 self.mapView.showAnnotations([annotation], animated: true)
        
             }
-            
+          }
         }
-        
-        
+    }
+    
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+        {
+            let identifier = "MyMarker"
+            
+            if annotation.isKind(of: MKUserLocation.self) {
+                return nil
+            }
+            
+            var annotationView: MKMarkerAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
+            
+            if annotationView == nil {
+                annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            }
+            
+            annotationView?.glyphText = " "
+            annotationView?.markerTintColor = UIColor.orange
+            
+            return annotationView
         }
         
         // Do any additional setup after loading the view.
@@ -66,4 +94,4 @@ class MapViewController: UIViewController {
     }
     */
 
-}
+
