@@ -28,6 +28,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.showsScale = true
         mapView.showsTraffic = true
         
+        
+        
 
         let geoCoder = CLGeocoder()
         
@@ -72,7 +74,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             }
             
-            annotationView?.glyphText = " "
+            annotationView?.glyphText = "🦁"
             annotationView?.markerTintColor = UIColor.orange
             
             return annotationView

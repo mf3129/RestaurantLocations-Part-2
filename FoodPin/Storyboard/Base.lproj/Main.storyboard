@@ -12,6 +12,9 @@
         <array key="Rubik-Medium.ttf">
             <string>Rubik-Medium</string>
         </array>
+        <array key="Rubik-Regular.ttf">
+            <string>Rubik-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--FoodPin-->
@@ -108,11 +111,11 @@
             <objects>
                 <viewController id="MwY-PD-f7e" customClass="RestaurantDetailViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Edt-og-S5F">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ijt-hh-pxt">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="1mm-qf-Sei" userLabel="Header View" customClass="RestaurantDetailHeaderView" customModule="FoodPin" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
@@ -126,7 +129,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZP7-ls-bLN" userLabel="Name Label">
-                                            <rect key="frame" x="14" y="272" width="86" height="41"/>
+                                            <rect key="frame" x="14" y="272" width="91.5" height="41"/>
                                             <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="35"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -175,6 +178,35 @@
                                         <outlet property="nameLabel" destination="ZP7-ls-bLN" id="Jba-67-eOx"/>
                                         <outlet property="typeLabel" destination="LzW-4Z-bse" id="Gjs-WY-bev"/>
                                     </connections>
+                                </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="snx-wJ-bE6">
+                                    <rect key="frame" x="0.0" y="725" width="375" height="90"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlX-vw-Pcm">
+                                            <rect key="frame" x="15" y="21" width="345" height="48"/>
+                                            <color key="backgroundColor" red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <state key="normal" title="Rate It">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="25"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <segue destination="NXV-tU-5gf" kind="presentation" identifier="restaurantReview" modalTransitionStyle="flipHorizontal" id="cfM-nV-jQa"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="FlX-vw-Pcm" firstAttribute="top" secondItem="snx-wJ-bE6" secondAttribute="top" constant="21" id="8Ym-dv-7BG"/>
+                                        <constraint firstAttribute="bottom" secondItem="FlX-vw-Pcm" secondAttribute="bottom" constant="21" id="aNu-MF-gAG"/>
+                                        <constraint firstAttribute="trailing" secondItem="FlX-vw-Pcm" secondAttribute="trailing" constant="15" id="mbW-Ya-STH"/>
+                                        <constraint firstItem="FlX-vw-Pcm" firstAttribute="leading" secondItem="snx-wJ-bE6" secondAttribute="leading" constant="15" id="rWi-Ja-38W"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantDetailIconTextCell" id="Qel-zX-WRJ" customClass="RestaurantDetailIconTextCell" customModule="FoodPin" customModuleProvider="target">
@@ -315,7 +347,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aXW-Kr-gi3"/>
                     </view>
-                    <size key="freeformSize" width="375" height="900"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="headerView" destination="1mm-qf-Sei" id="l4w-11-nXF"/>
                         <outlet property="tableView" destination="ijt-hh-pxt" id="Vcr-GA-HTM"/>
@@ -352,7 +384,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Kb-aS-h4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2525.5999999999999" y="44.527736131934034"/>
+            <point key="canvasLocation" x="2574" y="-283"/>
+        </scene>
+        <!--Review View Controller-->
+        <scene sceneID="ZAL-sm-QsH">
+            <objects>
+                <viewController id="NXV-tU-5gf" customClass="ReviewViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h7c-kw-Lr1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6s9-28-t4J">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jFO-N5-b28">
+                                <rect key="frame" x="74" y="93" width="227" height="481"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWe-4X-fvS">
+                                        <rect key="frame" x="0.0" y="0.0" width="188" height="82"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Love" image="love"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnL-eb-f8w">
+                                        <rect key="frame" x="0.0" y="92" width="181" height="83"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Cool" image="cool"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxa-lV-0mV">
+                                        <rect key="frame" x="0.0" y="185" width="227" height="86"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Happy" image="happy"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5J-IV-XZT">
+                                        <rect key="frame" x="0.0" y="281" width="167" height="87"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Sad" image="sad"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhZ-M7-RlT">
+                                        <rect key="frame" x="0.0" y="378" width="218" height="103"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Angry" image="angry"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wy7-nD-2nB">
+                                <rect key="frame" x="326" y="31" width="33" height="32"/>
+                                <state key="normal" image="cross"/>
+                                <connections>
+                                    <segue destination="TJr-ES-1Ro" kind="unwind" unwindAction="closeWithSegue:" id="U0q-a8-ARN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6s9-28-t4J" firstAttribute="leading" secondItem="h7c-kw-Lr1" secondAttribute="leading" id="1U4-kN-BIP"/>
+                            <constraint firstAttribute="bottom" secondItem="6s9-28-t4J" secondAttribute="bottom" id="Esd-gT-rML"/>
+                            <constraint firstItem="jFO-N5-b28" firstAttribute="centerX" secondItem="h7c-kw-Lr1" secondAttribute="centerX" id="WBA-Yr-gol"/>
+                            <constraint firstItem="wy7-nD-2nB" firstAttribute="top" secondItem="Eqx-me-jbp" secondAttribute="top" constant="11" id="YYi-7G-f9u"/>
+                            <constraint firstItem="6s9-28-t4J" firstAttribute="top" secondItem="h7c-kw-Lr1" secondAttribute="top" id="fDa-ew-GCA"/>
+                            <constraint firstItem="Eqx-me-jbp" firstAttribute="trailing" secondItem="wy7-nD-2nB" secondAttribute="trailing" constant="16" id="gFi-uq-Sb5"/>
+                            <constraint firstItem="jFO-N5-b28" firstAttribute="centerY" secondItem="h7c-kw-Lr1" secondAttribute="centerY" id="lsV-bW-hmj"/>
+                            <constraint firstAttribute="trailing" secondItem="6s9-28-t4J" secondAttribute="trailing" id="ml5-PS-DST"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Eqx-me-jbp"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="6s9-28-t4J" id="huC-lZ-XMl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qzn-F0-3kA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TJr-ES-1Ro" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2574" y="386"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cmZ-La-i97">
@@ -374,6 +477,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="angry" width="78" height="103"/>
+        <image name="cool" width="78" height="83"/>
+        <image name="cross" width="33" height="32"/>
+        <image name="happy" width="78" height="86"/>
         <image name="heart-tick" width="22" height="21"/>
+        <image name="love" width="78" height="82"/>
+        <image name="sad" width="78" height="87"/>
     </resources>
 </document>
