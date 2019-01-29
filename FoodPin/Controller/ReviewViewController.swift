@@ -12,10 +12,11 @@ class ReviewViewController: UIViewController {
 
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var rateButtons: [UIButton]!
-    
+    @IBOutlet weak var closeButton: UIButton!
     
     var restaurant = Restaurant()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +28,7 @@ class ReviewViewController: UIViewController {
         blurEffectView.frame = view.bounds
         backgroundImageView.addSubview(blurEffectView)
         
+        
         let movingRightTransform = CGAffineTransform.init(translationX: 600, y: 0)
         let scaleUpTransform = CGAffineTransform.init(scaleX: 5.0, y: 5.0)
         let moveScaleTransform = scaleUpTransform.concatenating(movingRightTransform)
@@ -35,7 +37,12 @@ class ReviewViewController: UIViewController {
             rateButton.alpha = 0
             rateButton.transform = movingRightTransform
         }
+        
+        
+        let movingUpTansfrom = CGAffineTransform(translationX: 0, y: -600)
+            closeButton.transform = movingUpTansfrom
     }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,21 +52,17 @@ class ReviewViewController: UIViewController {
             self.rateButtons[0].transform = .identity},
             completion: nil)
         
+        for rateButton in rateButtons {
+            
         UIView.animate(withDuration: 2.5) {
-            self.rateButtons[1].alpha = 1.0
-            self.rateButtons[1].transform = .identity
+            self.rateButtons?[rateButton.tag].alpha = 1.0
+            self.rateButtons?[rateButton.tag].transform = .identity
             
-            self.rateButtons[2].alpha = 1.0
-            self.rateButtons[2].transform = .identity
-            
-            self.rateButtons[3].alpha = 1.0
-            self.rateButtons[3].transform = .identity
-            
-            self.rateButtons[4].alpha = 1.0
-            self.rateButtons[4].transform = .identity
+            self.closeButton.alpha = 1.0
+            self.closeButton.transform = .identity
+                }
             }
         }
-    
     }
     /*
     // MARK: - Navigation

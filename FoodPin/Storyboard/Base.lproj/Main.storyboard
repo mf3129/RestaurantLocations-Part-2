@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -418,7 +419,7 @@
                                             <segue destination="TJr-ES-1Ro" kind="unwind" identifier="love" unwindAction="rateRestaurantWithSegue:" id="dPy-Aj-r9e"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnL-eb-f8w">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnL-eb-f8w">
                                         <rect key="frame" x="0.0" y="92" width="181" height="83"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Cool" image="cool"/>
@@ -426,7 +427,7 @@
                                             <segue destination="TJr-ES-1Ro" kind="unwind" identifier="cool" unwindAction="rateRestaurantWithSegue:" id="KCU-hQ-TJc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxa-lV-0mV">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxa-lV-0mV">
                                         <rect key="frame" x="0.0" y="185" width="227" height="86"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Happy" image="happy"/>
@@ -434,7 +435,7 @@
                                             <segue destination="TJr-ES-1Ro" kind="unwind" identifier="happy" unwindAction="rateRestaurantWithSegue:" id="9BQ-ml-UdM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5J-IV-XZT">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5J-IV-XZT">
                                         <rect key="frame" x="0.0" y="281" width="167" height="87"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Sad" image="sad"/>
@@ -442,7 +443,7 @@
                                             <segue destination="TJr-ES-1Ro" kind="unwind" identifier="sad" unwindAction="rateRestaurantWithSegue:" id="qNR-vS-Osw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhZ-M7-RlT">
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhZ-M7-RlT">
                                         <rect key="frame" x="0.0" y="378" width="218" height="103"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Angry" image="angry"/>
@@ -452,7 +453,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wy7-nD-2nB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wy7-nD-2nB" userLabel="Close Button">
                                 <rect key="frame" x="326" y="31" width="33" height="32"/>
                                 <state key="normal" image="cross"/>
                                 <connections>
@@ -475,6 +476,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="6s9-28-t4J" id="huC-lZ-XMl"/>
+                        <outlet property="closeButton" destination="wy7-nD-2nB" id="wT3-Wk-gMR"/>
                         <outletCollection property="rateButtons" destination="dWe-4X-fvS" collectionClass="NSMutableArray" id="2vw-Be-EJ4"/>
                         <outletCollection property="rateButtons" destination="QnL-eb-f8w" collectionClass="NSMutableArray" id="KxO-ub-JGf"/>
                         <outletCollection property="rateButtons" destination="Kxa-lV-0mV" collectionClass="NSMutableArray" id="226-AO-jv3"/>
