@@ -34,6 +34,10 @@ class RestaurantTableViewController: UITableViewController {
     ]
 
     
+    @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - View controller life cycle
     
     override func viewDidLoad() {
