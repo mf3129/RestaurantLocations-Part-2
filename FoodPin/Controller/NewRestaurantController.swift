@@ -10,6 +10,7 @@ import UIKit
 
 class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    
     @IBOutlet weak var photoImageView: UIImageView!
     
     @IBOutlet var nameTextField: RoundedTextField! {
@@ -49,8 +50,6 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,6 +60,32 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
         }
         
     }
+    
+    
+    @IBAction func saveButton(_ sender: Any) {
+        
+        if (nameTextField.text == "" || typeTextField.text == "" || addressTextField.text == "" || phoneTextField.text == "" || descriptionTextView.text == "" ){
+            
+            let ErrorController = UIAlertController(title: "Ayyyeee", message: "You forgot to enter text for one or more fields.", preferredStyle: .alert)
+            
+            let errorAlert = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+            ErrorController.addAction(errorAlert)
+            
+            //Displaying the menu
+            present(ErrorController, animated: true, completion: nil)
+            
+            
+        } else {
+            print("Name: " + nameTextField.text!)
+            print("Type: " + typeTextField.text!)
+            print("Location: " + addressTextField.text!)
+            print("Phone: " + phoneTextField.text!)
+            print("Description: " + descriptionTextView.text!)
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
 
     
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -131,8 +156,26 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
                 photoImageView.clipsToBounds = true
         }
         
+            let leadingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .leading, relatedBy: .equal, toItem: photoImageView.superview, attribute: .leading, multiplier: 1, constant: 0)
+                leadingConstraint.isActive = true
+        
+            
+            let trailingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .trailing, relatedBy: .equal, toItem: photoImageView.superview, attribute: .trailing, multiplier: 1, constant: 0)
+                trailingConstraint.isActive = true
+        
+            let topConstraint = NSLayoutConstraint(item: photoImageView, attribute: .top, relatedBy: .equal, toItem: photoImageView.superview, attribute: .top, multiplier: 1, constant: 0)
+                topConstraint.isActive = true
+        
+            let bottomConstraint = NSLayoutConstraint(item: photoImageView, attribute: .bottom, relatedBy: .equal, toItem: photoImageView.superview, attribute: .bottom, multiplier: 1, constant: 0)
+                bottomConstraint.isActive = true
+        
+        
         dismiss(animated: true, completion: nil)
     }
+    
+
+    
+    
     
     
 }
