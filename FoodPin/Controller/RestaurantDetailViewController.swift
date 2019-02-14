@@ -60,7 +60,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailMapCell.self), for: indexPath) as! RestaurantDetailMapCell
             
-            cell.configure(location: restaurant.location)
+            if let restaurantLocation = restaurant.location {
+                cell.configure(location: restaurantLocation)
+            }
+            
             cell.selectionStyle = .none
             
             return cell
@@ -106,7 +109,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
     
     
     
-    var restaurant = Restaurant()
+    var restaurant: RestaurantMO!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +127,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         
         headerView.nameLabel.text = restaurant.name
         headerView.typeLabel.text = restaurant.type
-        headerView.headerImageView.image = UIImage(named: restaurant.image)
+        if let restaurantImage =  restaurant.image {
+            headerView.headerImageView.image = UIImage(data: restaurantImage as Data)}
         headerView.heartImageView.isHidden = (restaurant.isVisited) ? false : true
     
     }

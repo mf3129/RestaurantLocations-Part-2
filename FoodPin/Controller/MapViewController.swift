@@ -14,7 +14,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var restaurant = Restaurant()
+    var restaurant: RestaurantMO!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,29 +23,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         scale.scaleVisibility = .visible // always visible
         view.addSubview(scale)
         
+        //Customizing the Map View
         mapView.delegate = self
         mapView.showsCompass = true
         mapView.showsScale = true
         mapView.showsTraffic = true
         
-        
-        
-
+        //Converting the Address To Coordinate and Annotate On The Map
         let geoCoder = CLGeocoder()
-        
-        geoCoder.geocodeAddressString(restaurant.location) { (placemarks, error) in
-            
+        geoCoder.geocodeAddressString(restaurant.location ?? "", completionHandler: { placemarks, error in
         if let error = error {
             print(error)
             return
         }
         
         if let placemarks = placemarks {
-            
+            //Obtaining the First Placemark
             let placemark = placemarks[0]
             
+            //Adding The Annotation
             let annotation = MKPointAnnotation()
-            
             annotation.title = self.restaurant.name
             annotation.subtitle = self.restaurant.type
             
@@ -57,8 +54,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
        
             }
           }
-        }
+        })
     }
+    
     
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
         {
