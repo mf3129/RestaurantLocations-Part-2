@@ -30,7 +30,7 @@
 		A85E1B8921F730BD0095E337 /* RestaurantDetailSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E1B8821F730BD0095E337 /* RestaurantDetailSeparatorCell.swift */; };
 		A85E1B8B21F7375D0095E337 /* RestaurantDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E1B8A21F7375D0095E337 /* RestaurantDetailMapCell.swift */; };
 		A85E1B8D21F81D8A0095E337 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E1B8C21F81D8A0095E337 /* MapViewController.swift */; };
-		A877CBDA220F7EBB005D08B4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A877CBD8220F7EBB005D08B4 /* Model.xcdatamodeld */; };
+		A877CBDA220F7EBB005D08B4 /* Restaurant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A877CBD8220F7EBB005D08B4 /* Restaurant.xcdatamodeld */; };
 		A891E0C421E51B1A00C2582C /* RestaurantDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891E0C321E51B1A00C2582C /* RestaurantDetailHeaderView.swift */; };
 		F44705AE211AF99E002E0327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44705AD211AF99E002E0327 /* AppDelegate.swift */; };
 		F44705B3211AF99E002E0327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44705B1211AF99E002E0327 /* Main.storyboard */; };
@@ -194,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				F481ACB12123383100B6DC2F /* Restaurant.swift */,
-				A877CBD8220F7EBB005D08B4 /* Model.xcdatamodeld */,
+				A877CBD8220F7EBB005D08B4 /* Restaurant.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,7 +309,7 @@
 				A83FD46821E9167E004F0F52 /* RestaurantDetailTextCell.swift in Sources */,
 				F44705C0211AFFE1002E0327 /* RestaurantTableViewController.swift in Sources */,
 				A85E1B8D21F81D8A0095E337 /* MapViewController.swift in Sources */,
-				A877CBDA220F7EBB005D08B4 /* Model.xcdatamodeld in Sources */,
+				A877CBDA220F7EBB005D08B4 /* Restaurant.xcdatamodeld in Sources */,
 				F463DF78211D35A600F73F88 /* RestaurantTableViewCell.swift in Sources */,
 				A83FD46621E8849E004F0F52 /* RestaurantDetailIconTextCell.swift in Sources */,
 				A81096D221F0572B00E8AC0E /* UIColor+Ext.swift in Sources */,
@@ -521,13 +521,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A877CBD8220F7EBB005D08B4 /* Model.xcdatamodeld */ = {
+		A877CBD8220F7EBB005D08B4 /* Restaurant.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				A877CBD9220F7EBB005D08B4 /* Model.xcdatamodel */,
 			);
 			currentVersion = A877CBD9220F7EBB005D08B4 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			path = Restaurant.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

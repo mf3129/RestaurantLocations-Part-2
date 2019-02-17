@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    
+    var restaurant: RestaurantMO!
     @IBOutlet weak var photoImageView: UIImageView!
     
     @IBOutlet var nameTextField: RoundedTextField! {
@@ -77,12 +78,33 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
             
             
         } else {
-            print("Name: " + nameTextField.text!)
-            print("Type: " + typeTextField.text!)
-            print("Location: " + addressTextField.text!)
-            print("Phone: " + phoneTextField.text!)
-            print("Description: " + descriptionTextView.text!)
-            dismiss(animated: true, completion: nil)
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                restaurant = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
+            
+            //Stroring restaurant object models into
+                restaurant.name = nameTextField.text
+                restaurant.type = typeTextField.text
+                restaurant.location = addressTextField.text
+                restaurant.phone = phoneTextField.text
+                restaurant.summary = descriptionTextView.text
+                restaurant.isVisited = false
+            
+                if let restaurantImage = photoImageView.image {
+                    restaurant.image = restaurantImage.pngData()
+                }
+            
+                print("Saving data to context...")
+                appDelegate.saveContext()
+               
+                dismiss(animated: true, completion: nil)
+            
+//            //Hard Coded Database | Pre-Core Data
+//            print("Name: " + nameTextField.text!)
+//            print("Type: " + typeTextField.text!)
+//            print("Location: " + addressTextField.text!)
+//            print("Phone: " + phoneTextField.text!)
+//            print("Description: " + descriptionTextView.text!)
+            }
         }
     }
     

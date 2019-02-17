@@ -6,10 +6,12 @@
 
 
 import UIKit
+import CoreData
 
-class RestaurantTableViewController: UITableViewController {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var restaurants:[RestaurantMO] = []
+    var fetchedResultsController: NSFetchedResultsController<RestaurantMO>!
     
     @IBOutlet var emptyRestaurantView: UIView!
     
@@ -24,6 +26,28 @@ class RestaurantTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Creating Fetch Request and OrderingFrom Core Database
+        let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchedResultsController =  NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            fetchedResultsController.delegate = self
+            
+            do {
+               try fetchedResultsController.performFetch()
+                if let fetchedObjects = fetchedResultsController.fetchedObjects {
+                    restaurants = fetchedObjects
+                }
+            } catch{
+                
+            }
+        }
+        
+        
+        //Created The Empty View
         tableView.backgroundView = emptyRestaurantView
         tableView.backgroundView?.isHidden = true
         tableView.cellLayoutMarginsFollowReadableWidth = true
@@ -36,6 +60,44 @@ class RestaurantTableViewController: UITableViewController {
         }
         
     }
+    
+    // MARK: - NSFetchedResultControllerDelegate Methods Needed For Core Data
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch (type) {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        default:
+            tableView.reloadRows(at: [indexPath!], with: .fade)
+        }
+        
+        if let fetchedObjects = controller.fetchedObjects {
+            restaurants = fetchedObjects as! [RestaurantMO]
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -158,6 +220,8 @@ class RestaurantTableViewController: UITableViewController {
             }
         }
     }
+    
+    
 }
 
 
