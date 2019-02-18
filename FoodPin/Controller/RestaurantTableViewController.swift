@@ -144,16 +144,28 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        //Delete Action
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
-            // Delete the row from the data source
-            self.restaurants.remove(at: indexPath.row)
             
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            // Call completion handler with true to indicate
+            // Delete the row from the data store
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                let context = appDelegate.persistentContainer.viewContext
+                let restaurantToDelete = self.fetchedResultsController.object(at: indexPath)
+                context.delete(restaurantToDelete)
+                
+                appDelegate.saveContext()
+            }
+            // Called completion handler with true to indicate that it is complete
             completionHandler(true)
+            
+            //Used For Hard Coded Data Previously
+            //self.restaurants.remove(at: indexPath.row)
+            //self.tableView.deleteRows(at: [indexPath], with: .fade)
+            
         }
         
+        //Share Action
         let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
             let defaultText = "Just checking in at " + self.restaurants[indexPath.row].name!
             
@@ -178,10 +190,10 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
         
         // Set the icon and background color for the actions
-        deleteAction.backgroundColor = UIColor(red: 231.0, green: 76.0, blue: 60.0, alpha: 1.0)
+        deleteAction.backgroundColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
         deleteAction.image = UIImage(named: "delete")
         
-        shareAction.backgroundColor = UIColor(red: 254.0, green: 149.0, blue: 38.0, alpha: 1.0)
+        shareAction.backgroundColor = UIColor(red: 254.0/255.0, green: 149.0/255.0, blue: 38.0/255.0, alpha: 1.0)
         shareAction.image = UIImage(named: "share")
         
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
@@ -201,7 +213,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
         
         let checkInIcon = restaurants[indexPath.row].isVisited ? "undo" : "tick"
-        checkInAction.backgroundColor = UIColor(red: 38.0, green: 162.0, blue: 78.0, alpha: 1.0)
+        checkInAction.backgroundColor = UIColor(red: 38.0/255.0, green: 162.0/255.0, blue: 78.0/255.0, alpha: 1.0)
         checkInAction.image = UIImage(named: checkInIcon)
         
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [checkInAction])
