@@ -9,11 +9,16 @@ import UIKit
 import CoreData
 
 class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-
+    
+    
     var restaurants:[RestaurantMO] = []
     var fetchedResultsController: NSFetchedResultsController<RestaurantMO>!
     
     @IBOutlet var emptyRestaurantView: UIView!
+    
+    //Adding The SearchBar and Filtering Searches | Function Below
+    var searchController: UISearchController!
+    var searchResults: [RestaurantMO] = []
     
     
     
@@ -23,8 +28,13 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     // MARK: - View controller life cycle
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Creating The Search Bar
+        searchController = UISearchController(searchResultsController: nil)
+        self.navigationItem.searchController = searchController
         
         // Creating Fetch Request and OrderingFrom Core Database
         let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
@@ -94,9 +104,6 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-    
-    
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -222,6 +229,20 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         return swipeConfiguration
     }
     
+    // MARK: SEARCH BAR - Filter For Search Bar
+    func filterContent(for searchText: String) {
+        searchResults = restaurants.filter({ (restaurant) -> Bool in
+            if let name = restaurant.name {
+                let isMatch = name.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            }
+            return false
+        })
+    }
+    
+    
+    
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -232,9 +253,16 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             }
         }
     }
-    
+
     
 }
+
+
+
+
+
+
+
 
 
 /*
