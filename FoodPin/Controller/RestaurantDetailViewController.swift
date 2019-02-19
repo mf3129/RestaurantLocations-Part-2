@@ -44,9 +44,9 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailTextCell.self), for: indexPath) as! RestaurantDetailTextCell
             
-                cell.descriptionLabel.text = restaurant.description
+                cell.descriptionLabel.text = restaurant.summary
                 cell.selectionStyle = .none
-            
+        
             return cell
             
         case 3:
@@ -81,12 +81,16 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         dismiss(animated: true, completion: nil)
     }
   
-    
+    //Rating Restaurant Button
     @IBAction func rateRestaurant(segue: UIStoryboardSegue) {
         dismiss(animated: true) {
             if let rating = segue.identifier {
                 self.restaurant.rating = rating
                 self.headerView.ratingImageView.image = UIImage(named: rating)
+                
+                if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                    appDelegate.saveContext()
+                }
                 
                 let scaleTransform = CGAffineTransform(scaleX: 0.1, y: 0.1)
                 self.headerView.ratingImageView.transform = scaleTransform
@@ -105,14 +109,14 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         
     }
     
-    
-    
-    
-    
     var restaurant: RestaurantMO!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let rating = restaurant.rating {
+            headerView.ratingImageView.image = UIImage(named: rating)
+        }
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -154,6 +158,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
     }
     */
 
+    
+    // Segway To Review Or Map View Cotnroller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMap" {
             let destinationVC = segue.destination as! MapViewController
