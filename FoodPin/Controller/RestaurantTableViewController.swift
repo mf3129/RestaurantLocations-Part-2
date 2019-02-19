@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
     
     
     var restaurants:[RestaurantMO] = []
@@ -35,6 +35,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         //Creating The Search Bar
         searchController = UISearchController(searchResultsController: nil)
         self.navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false;
         
         // Creating Fetch Request and OrderingFrom Core Database
         let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
@@ -70,6 +72,10 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
         
     }
+    
+    
+    
+    
     
     // MARK: - NSFetchedResultControllerDelegate Methods Needed For Core Data
     
@@ -129,13 +135,22 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurants.count
+        
+        if searchController.isActive {
+            return searchResults.count
+        } else {
+            return restaurants.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "datacell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantTableViewCell
+        
+        //SearchBar - Getting restaurant from the search results or the original array
+        let restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
+        
         
         // Configure the cell...
         cell.nameLabel.text = restaurants[indexPath.row].name
@@ -229,7 +244,9 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         return swipeConfiguration
     }
     
-    // MARK: SEARCH BAR - Filter For Search Bar
+    // MARK: SEARCH BAR FUNCTIONALITY
+    
+    //Filter For Search Bar
     func filterContent(for searchText: String) {
         searchResults = restaurants.filter({ (restaurant) -> Bool in
             if let name = restaurant.name {
@@ -240,20 +257,36 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         })
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            tableView.reloadData()
+        }
+    }
     
+    //Disable share/delete button while searching
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if searchController.isActive {
+            return false
+        } else {
+            return true
+        }
+    }
     
-    
+
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRestaurantDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! RestaurantDetailViewController
-                destinationController.restaurant = restaurants[indexPath.row]
+                destinationController.restaurant = (searchController.isActive) ?   searchResults[indexPath.row] : restaurants[indexPath.row] /*For searchbar passing to detailVC */
             }
         }
     }
 
+    
+    
     
 }
 
