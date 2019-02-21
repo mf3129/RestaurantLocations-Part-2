@@ -34,9 +34,14 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         //Creating The Search Bar
         searchController = UISearchController(searchResultsController: nil)
-        self.navigationItem.searchController = searchController
+        searchController.searchBar.placeholder = "Search Restaurants..."
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.backgroundImage = UIImage()
+        searchController.searchBar.tintColor = UIColor(red: 231/255, green: 76/255, blue: 60/255)
+        // self.navigationItem.searchController = searchController
+        tableView.tableHeaderView = searchController.searchBar
         searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false;
+        searchController.dimsBackgroundDuringPresentation = false
         
         // Creating Fetch Request and OrderingFrom Core Database
         let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
@@ -255,6 +260,15 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             }
             return false
         })
+        
+        searchResults = restaurants.filter({ (restaurant) -> Bool in
+            if let location = restaurant.location {
+                let isMatch = location.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            }
+            return false
+        })
+        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -274,6 +288,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     }
     
 
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
