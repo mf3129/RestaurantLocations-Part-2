@@ -31,6 +31,7 @@
 		A85E1B8B21F7375D0095E337 /* RestaurantDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E1B8A21F7375D0095E337 /* RestaurantDetailMapCell.swift */; };
 		A85E1B8D21F81D8A0095E337 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85E1B8C21F81D8A0095E337 /* MapViewController.swift */; };
 		A877CBDA220F7EBB005D08B4 /* Restaurant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A877CBD8220F7EBB005D08B4 /* Restaurant.xcdatamodeld */; };
+		A877CC4E221F4001005D08B4 /* Instructions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A877CC4D221F4000005D08B4 /* Instructions.storyboard */; };
 		A891E0C421E51B1A00C2582C /* RestaurantDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891E0C321E51B1A00C2582C /* RestaurantDetailHeaderView.swift */; };
 		F44705AE211AF99E002E0327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44705AD211AF99E002E0327 /* AppDelegate.swift */; };
 		F44705B3211AF99E002E0327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44705B1211AF99E002E0327 /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 		A85E1B8A21F7375D0095E337 /* RestaurantDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailMapCell.swift; sourceTree = "<group>"; };
 		A85E1B8C21F81D8A0095E337 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A877CBD9220F7EBB005D08B4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A877CC4D221F4000005D08B4 /* Instructions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Instructions.storyboard; sourceTree = "<group>"; };
 		A891E0C321E51B1A00C2582C /* RestaurantDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailHeaderView.swift; sourceTree = "<group>"; };
 		F44705AA211AF99E002E0327 /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44705AD211AF99E002E0327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				F44705B1211AF99E002E0327 /* Main.storyboard */,
 				F44705B6211AF99F002E0327 /* LaunchScreen.storyboard */,
+				A877CC4D221F4000005D08B4 /* Instructions.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				A809B1B621E3CA1F004AC868 /* OFL.txt in Resources */,
 				A809B1BC21E3CA1F004AC868 /* Rubik-Black.ttf in Resources */,
 				A809B1BB21E3CA1F004AC868 /* Rubik-BoldItalic.ttf in Resources */,
+				A877CC4E221F4001005D08B4 /* Instructions.storyboard in Resources */,
 				A809B1B921E3CA1F004AC868 /* Rubik-LightItalic.ttf in Resources */,
 				A809B1B421E3CA1F004AC868 /* Rubik-BlackItalic.ttf in Resources */,
 				F44705B8211AF99F002E0327 /* LaunchScreen.storyboard in Resources */,
