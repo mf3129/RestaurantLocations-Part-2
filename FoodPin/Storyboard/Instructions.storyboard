@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Rubik-Bold.ttf">
+            <string>Rubik-Bold</string>
+        </array>
+        <array key="Rubik-Regular.ttf">
+            <string>Rubik-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Page View Controller-->
         <scene sceneID="wn5-fN-gVh">
@@ -18,10 +26,66 @@
             </objects>
             <point key="canvasLocation" x="764" y="-364"/>
         </scene>
+        <!--Walkthrough Content View Controller-->
+        <scene sceneID="EMg-Le-ZCP">
+            <objects>
+                <viewController storyboardIdentifier="WalkthroughContentViewController" id="2sq-WD-6i1" customClass="WalkthroughContentViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xwc-nX-6n7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="451"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="2vV-t7-tbi">
+                                <rect key="frame" x="24" y="50" width="327" height="328"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fee-AY-nMl">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="228.5"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="awE-U7-oXz">
+                                        <rect key="frame" x="119" y="278.5" width="89.5" height="49.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HEADING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4B-gx-rhp">
+                                                <rect key="frame" x="5.5" y="0.0" width="78.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="Rubik-Bold" family="Rubik" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subheading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8j-1s-RJw">
+                                                <rect key="frame" x="0.0" y="30.5" width="89.5" height="19"/>
+                                                <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="16"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2vV-t7-tbi" secondAttribute="height" multiplier="327:328" id="Qqv-eA-0bi"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="egV-5i-cBn" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2vV-t7-tbi" secondAttribute="bottom" constant="10" id="11B-74-dPg"/>
+                            <constraint firstItem="egV-5i-cBn" firstAttribute="trailing" secondItem="2vV-t7-tbi" secondAttribute="trailing" constant="24" id="bNP-aZ-nz5"/>
+                            <constraint firstItem="2vV-t7-tbi" firstAttribute="leading" secondItem="egV-5i-cBn" secondAttribute="leading" constant="24" id="beX-IT-0Pe"/>
+                            <constraint firstItem="2vV-t7-tbi" firstAttribute="top" secondItem="egV-5i-cBn" secondAttribute="top" constant="50" id="lrq-gn-RMd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="egV-5i-cBn"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="451"/>
+                    <connections>
+                        <outlet property="contentImageView" destination="Fee-AY-nMl" id="ehz-9r-Y2Y"/>
+                        <outlet property="headingLabel" destination="a4B-gx-rhp" id="jCn-fi-duH"/>
+                        <outlet property="subHeadingLabel" destination="N8j-1s-RJw" id="5I2-VD-Esx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQW-kY-DMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1482.4000000000001" y="-363.86806596701655"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ymj-He-H1S">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SeE-aI-aiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Ovk-2d-qqn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NH9-xP-8zG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -88,6 +152,7 @@
                         <viewLayoutGuide key="safeArea" id="b4l-jn-dXU"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SeE-aI-aiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-54" y="-266"/>
         </scene>
