@@ -33,14 +33,39 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         return contentViewController(at: index)
     }
     
+    //Content View Controller Helper Method
+    
+    func contentViewController(at index: Int) -> WalkthroughContentViewController {
+        if (index < 0 || index >= pageHeadings.count) {
+            return nil
+        }
+        
+        //Creating a new view controller and passing through data
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        if let pageContentViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughContentViewController") as? WalkthroughContentViewController {
+            
+            pageContentViewController.imageFile = pageImages[index]
+            pageContentViewController.subHeading = pageSubHeadings[index]
+            pageContentViewController.heading = pageHeadings[index]
+            pageContentViewController.index = index
+        }
+        
+    }
 
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //Setting datasource to itself
+        dataSource = self
         // Do any additional setup after loading the view.
+        
+        //Creating the fiest walkthrough controller
+        if let startingViewController = contentViewController(at: 0) {
+            setViewControllers([startingViewController], direction: .forward, animated: true, completion: nil)
+        }
     }
     
 
