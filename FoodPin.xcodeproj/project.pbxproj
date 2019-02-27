@@ -34,6 +34,7 @@
 		A877CC4E221F4001005D08B4 /* Instructions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A877CC4D221F4000005D08B4 /* Instructions.storyboard */; };
 		A877CC5022221358005D08B4 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877CC4F22221358005D08B4 /* WalkthroughContentViewController.swift */; };
 		A877CC5222221ED4005D08B4 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877CC5122221ED4005D08B4 /* WalkthroughPageViewController.swift */; };
+		A877CCC922262CF0005D08B4 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877CCC822262CF0005D08B4 /* WalkthroughViewController.swift */; };
 		A891E0C421E51B1A00C2582C /* RestaurantDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891E0C321E51B1A00C2582C /* RestaurantDetailHeaderView.swift */; };
 		F44705AE211AF99E002E0327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44705AD211AF99E002E0327 /* AppDelegate.swift */; };
 		F44705B3211AF99E002E0327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44705B1211AF99E002E0327 /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		A877CC4D221F4000005D08B4 /* Instructions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Instructions.storyboard; sourceTree = "<group>"; };
 		A877CC4F22221358005D08B4 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
 		A877CC5122221ED4005D08B4 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
+		A877CCC822262CF0005D08B4 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		A891E0C321E51B1A00C2582C /* RestaurantDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailHeaderView.swift; sourceTree = "<group>"; };
 		F44705AA211AF99E002E0327 /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44705AD211AF99E002E0327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				A80F3AC12205AFEA00DA6CE8 /* NewRestaurantController.swift */,
 				A877CC4F22221358005D08B4 /* WalkthroughContentViewController.swift */,
 				A877CC5122221ED4005D08B4 /* WalkthroughPageViewController.swift */,
+				A877CCC822262CF0005D08B4 /* WalkthroughViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				F44705C0211AFFE1002E0327 /* RestaurantTableViewController.swift in Sources */,
 				A85E1B8D21F81D8A0095E337 /* MapViewController.swift in Sources */,
 				A877CBDA220F7EBB005D08B4 /* Restaurant.xcdatamodeld in Sources */,
+				A877CCC922262CF0005D08B4 /* WalkthroughViewController.swift in Sources */,
 				F463DF78211D35A600F73F88 /* RestaurantTableViewCell.swift in Sources */,
 				A83FD46621E8849E004F0F52 /* RestaurantDetailIconTextCell.swift in Sources */,
 				A81096D221F0572B00E8AC0E /* UIColor+Ext.swift in Sources */,

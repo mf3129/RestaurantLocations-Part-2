@@ -18,10 +18,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Page View Controller-->
+        <!--Walkthrough Page View Controller-->
         <scene sceneID="wn5-fN-gVh">
             <objects>
-                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="UAq-1X-Rbp" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="WalkthroughPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="UAq-1X-Rbp" customClass="WalkthroughPageViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CrX-Uf-guc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="764" y="-364"/>
@@ -83,10 +83,10 @@
             </objects>
             <point key="canvasLocation" x="1482.4000000000001" y="-363.86806596701655"/>
         </scene>
-        <!--View Controller-->
+        <!--Walkthrough View Controller-->
         <scene sceneID="ymj-He-H1S">
             <objects>
-                <viewController id="Ovk-2d-qqn" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughViewController" id="Ovk-2d-qqn" customClass="WalkthroughViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NH9-xP-8zG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,6 +151,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b4l-jn-dXU"/>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="n42-qN-FeJ" id="cXe-4J-fMi"/>
+                        <outlet property="pageControl" destination="2jv-Uj-N6d" id="7mG-un-3G7"/>
+                        <outlet property="skipButton" destination="cUX-ah-cTx" id="sHd-AE-nVh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeE-aI-aiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -51,9 +51,6 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         }
         
     }
-
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
