@@ -10,6 +10,8 @@ import UIKit
 
 class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerDataSource {
     
+    
+    //Data For View Context View Controller
     var pageHeadings = ["CREATE YOUR OWN FOOD", "SHOW YOU THE LOCATION", "DISCOVER GREAT RESTAURANTS"]
     
     var pageImages = ["onboarding-1", "onboarding-2", "onboarding-3"]
@@ -35,7 +37,7 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
     
     //Content View Controller Helper Method
     
-    func contentViewController(at index: Int) -> WalkthroughContentViewController {
+    func contentViewController(at index: Int) -> WalkthroughContentViewController? {
         if (index < 0 || index >= pageHeadings.count) {
             return nil
         }
@@ -48,8 +50,11 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
             pageContentViewController.subHeading = pageSubHeadings[index]
             pageContentViewController.heading = pageHeadings[index]
             pageContentViewController.index = index
+            
+            return pageContentViewController
         }
         
+        return nil
     }
     
     override func viewDidLoad() {

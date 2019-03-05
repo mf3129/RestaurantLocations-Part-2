@@ -78,8 +78,14 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
     }
     
-    
-    
+    //Loading the walkthrough view controller 
+    override func viewDidAppear(_ animated: Bool) {
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil
+        )
+        if let walkthroughViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController {
+                present(walkthroughViewController, animated: true, completion: nil)
+        }
+    }
     
     
     // MARK: - NSFetchedResultControllerDelegate Methods Needed For Core Data
