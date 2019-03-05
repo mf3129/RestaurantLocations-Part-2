@@ -20,6 +20,7 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
     
     var currentIndex = 0
     
+    
     //Page View Datasource Methods
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         var index = (viewController as! WalkthroughContentViewController).index
@@ -38,12 +39,12 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
     //Content View Controller Helper Method
     
     func contentViewController(at index: Int) -> WalkthroughContentViewController? {
-        if (index < 0 || index >= pageHeadings.count) {
+        if index < 0 || index >= pageHeadings.count {
             return nil
         }
         
         //Creating a new view controller and passing through data
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let storyboard = UIStoryboard(name: "Instructions", bundle: nil)
         if let pageContentViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughContentViewController") as? WalkthroughContentViewController {
             
             pageContentViewController.imageFile = pageImages[index]
@@ -57,6 +58,14 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         return nil
     }
     
+    func forwardPage() {
+        currentIndex += 1
+        if let nextViewController = contentViewController(at: currentIndex) {
+            setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,7 +73,7 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         dataSource = self
         // Do any additional setup after loading the view.
         
-        //Creating the fiest walkthrough controller
+        //Creating the first walkthrough controller
         if let startingViewController = contentViewController(at: 0) {
             setViewControllers([startingViewController], direction: .forward, animated: true, completion: nil)
         }

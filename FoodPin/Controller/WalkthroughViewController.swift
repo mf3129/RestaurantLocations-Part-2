@@ -9,7 +9,8 @@
 import UIKit
 
 class WalkthroughViewController: UIViewController {
-
+    
+    var walkthroughPageViewController: WalkthroughPageViewController?
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var nextButton: UIButton! {
         didSet {
@@ -19,12 +20,25 @@ class WalkthroughViewController: UIViewController {
     }
     @IBOutlet var skipButton: UIButton!
     
+    //Skip button for master walktrough view controller
+    @IBAction func skipButtonTapped(sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
     
+    //Obtaining reference to the Walkthrough Page view controller 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination
+        if let pageViewController = destination as? WalkthroughPageViewController {
+            walkthroughPageViewController = pageViewController
+        }
+    }
 
     
 

@@ -28,6 +28,14 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     // MARK: - View controller life cycle
     
+    //Loading the walkthrough view controller
+    override func viewDidAppear(_ animated: Bool) {
+        let storyboard = UIStoryboard(name: "Instructions", bundle: nil
+        )
+        if let walkthroughViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController {
+            present(walkthroughViewController, animated: true, completion: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,15 +84,6 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             navigationController?.navigationBar.largeTitleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0), NSAttributedString.Key.font: customFont ]
         }
         
-    }
-    
-    //Loading the walkthrough view controller 
-    override func viewDidAppear(_ animated: Bool) {
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil
-        )
-        if let walkthroughViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController {
-                present(walkthroughViewController, animated: true, completion: nil)
-        }
     }
     
     
