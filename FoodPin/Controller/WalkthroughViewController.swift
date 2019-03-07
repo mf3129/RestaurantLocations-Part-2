@@ -76,7 +76,8 @@ class WalkthroughViewController: UIViewController, WalkthroughPageViewController
             case 0...1:
                 walkthroughPageViewController?.forwardPage()
             case 2:
-               dismiss(animated: true, completion: nil)
+                UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
+                dismiss(animated: true, completion: nil)
             default:
                 break;
                 
