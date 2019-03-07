@@ -26,20 +26,23 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: - View controller life cycle
+    //Loading storyboard
     
-    //Loading the walkthrough view controller
     override func viewDidAppear(_ animated: Bool) {
+        //Loading the walkthrough view controller
         let storyboard = UIStoryboard(name: "Instructions", bundle: nil
         )
         if let walkthroughViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController {
             present(walkthroughViewController, animated: true, completion: nil)
         }
+        
     }
     
+    // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         //Creating The Search Bar
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "Search Restaurants..."

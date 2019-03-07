@@ -8,9 +8,9 @@
 
 import UIKit
 
-class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerDataSource {
+class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerDataSource,UIPageViewControllerDelegate {
     
-    
+    weak var walkthroughDelegate: WalkthroughPageViewControllerDelegate? 
     //Data For View Context View Controller
     var pageHeadings = ["CREATE YOUR OWN FOOD", "SHOW YOU THE LOCATION", "DISCOVER GREAT RESTAURANTS"]
     
@@ -66,11 +66,25 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         
     }
     
+    // UI Page View Controller Delegate
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+        if completed {
+            if let contentViewController = pageViewController.viewControllers?.first as? WalkthroughContentViewController {
+                
+                currentIndex = contentViewController.index
+                
+                walkthroughDelegate?.didUpdatePageIndex(currentIndex: contentViewController.index)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Setting datasource to itself
         dataSource = self
+        delegate = self
         // Do any additional setup after loading the view.
         
         //Creating the first walkthrough controller
