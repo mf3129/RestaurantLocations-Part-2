@@ -36,6 +36,8 @@
 		A877CC5222221ED4005D08B4 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877CC5122221ED4005D08B4 /* WalkthroughPageViewController.swift */; };
 		A877CCC922262CF0005D08B4 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877CCC822262CF0005D08B4 /* WalkthroughViewController.swift */; };
 		A891E0C421E51B1A00C2582C /* RestaurantDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891E0C321E51B1A00C2582C /* RestaurantDetailHeaderView.swift */; };
+		A8FD0A132231B23200B1CE81 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FD0A112231B23200B1CE81 /* About.storyboard */; };
+		A8FD0A152231B5CA00B1CE81 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FD0A142231B5CA00B1CE81 /* Discover.storyboard */; };
 		F44705AE211AF99E002E0327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44705AD211AF99E002E0327 /* AppDelegate.swift */; };
 		F44705B3211AF99E002E0327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44705B1211AF99E002E0327 /* Main.storyboard */; };
 		F44705B5211AF99F002E0327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44705B4211AF99F002E0327 /* Assets.xcassets */; };
@@ -76,6 +78,8 @@
 		A877CC5122221ED4005D08B4 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		A877CCC822262CF0005D08B4 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		A891E0C321E51B1A00C2582C /* RestaurantDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailHeaderView.swift; sourceTree = "<group>"; };
+		A8FD0A122231B23200B1CE81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FoodPin/Storyboard/Base.lproj/About.storyboard; sourceTree = "<group>"; };
+		A8FD0A142231B5CA00B1CE81 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		F44705AA211AF99E002E0327 /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44705AD211AF99E002E0327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F44705B2211AF99E002E0327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				F44705B1211AF99E002E0327 /* Main.storyboard */,
+				A8FD0A142231B5CA00B1CE81 /* Discover.storyboard */,
+				A8FD0A112231B23200B1CE81 /* About.storyboard */,
 				F44705B6211AF99F002E0327 /* LaunchScreen.storyboard */,
 				A877CC4D221F4000005D08B4 /* Instructions.storyboard */,
 			);
@@ -292,6 +298,7 @@
 				A809B1BC21E3CA1F004AC868 /* Rubik-Black.ttf in Resources */,
 				A809B1BB21E3CA1F004AC868 /* Rubik-BoldItalic.ttf in Resources */,
 				A877CC4E221F4001005D08B4 /* Instructions.storyboard in Resources */,
+				A8FD0A132231B23200B1CE81 /* About.storyboard in Resources */,
 				A809B1B921E3CA1F004AC868 /* Rubik-LightItalic.ttf in Resources */,
 				A809B1B421E3CA1F004AC868 /* Rubik-BlackItalic.ttf in Resources */,
 				F44705B8211AF99F002E0327 /* LaunchScreen.storyboard in Resources */,
@@ -304,6 +311,7 @@
 				A809B1BD21E3CA1F004AC868 /* Rubik-MediumItalic.ttf in Resources */,
 				F44705B3211AF99E002E0327 /* Main.storyboard in Resources */,
 				A809B1BA21E3CA1F004AC868 /* Rubik-Light.ttf in Resources */,
+				A8FD0A152231B5CA00B1CE81 /* Discover.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +348,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A8FD0A112231B23200B1CE81 /* About.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8FD0A122231B23200B1CE81 /* Base */,
+			);
+			name = About.storyboard;
+			sourceTree = "<group>";
+		};
 		F44705B1211AF99E002E0327 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
