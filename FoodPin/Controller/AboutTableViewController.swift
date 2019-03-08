@@ -16,12 +16,19 @@ class AboutTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        tableView.cellLayoutMarginsFollowReadableWidth = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        //Configuring navigation Bar Appearance
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        if let customFont = UIFont(name: "Rubik-Medium", size: 40.0) {
+            navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 231, green: 76, blue: 60), NSAttributedString.Key.font: customFont]
+        }
+        
+        tableView.tableFooterView = UIView()
+        
     }
 
     // MARK: - Table view data source
@@ -48,6 +55,27 @@ class AboutTableViewController: UITableViewController {
         cell.imageView?.image = UIImage(named: cellData.image)
         
         return cell                                                                                                                                                                                                                                                 
+    }
+    
+    
+    //Opening Web Content
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let link = sectionContent[indexPath.section][indexPath.row].link
+        
+        switch indexPath.section {
+        case 0:
+            if indexPath.row == 0 {
+                if let url = URL(string: link) {
+                    UIApplication.shared.open(url)
+                }
+            }
+        default:
+            break
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
     
