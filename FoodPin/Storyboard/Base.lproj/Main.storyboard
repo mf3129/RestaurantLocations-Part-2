@@ -50,6 +50,7 @@
         <!--About-->
         <scene sceneID="S1S-MA-eec">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zdz-gz-duD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="UITableViewController-Jpf-gM-rFS" id="Jpf-gM-rFS" customClass="AboutTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aWq-7R-I4q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -94,8 +95,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="About" id="lNY-Hl-mWO"/>
+                    <connections>
+                        <segue destination="uag-2Y-5Fh" kind="show" identifier="showWebView" id="0Jl-RJ-Vuc"/>
+                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zdz-gz-duD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1225" y="1710"/>
         </scene>
@@ -906,6 +909,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fg-F3-tnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="294" y="997"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="9SJ-vv-SeA">
+            <objects>
+                <viewController id="uag-2Y-5Fh" customClass="WebViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kc4-Oh-3QP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbu-9n-0eO">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hbu-9n-0eO" firstAttribute="trailing" secondItem="LuB-M6-ho9" secondAttribute="trailing" id="CVJ-7G-r8u"/>
+                            <constraint firstItem="hbu-9n-0eO" firstAttribute="leading" secondItem="LuB-M6-ho9" secondAttribute="leading" id="RY8-Y7-eOs"/>
+                            <constraint firstItem="hbu-9n-0eO" firstAttribute="bottom" secondItem="LuB-M6-ho9" secondAttribute="bottom" id="dLM-9Y-j0I"/>
+                            <constraint firstItem="hbu-9n-0eO" firstAttribute="top" secondItem="LuB-M6-ho9" secondAttribute="top" id="iV3-j4-QpC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LuB-M6-ho9"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="hbu-9n-0eO" id="1e8-1D-3nR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DbG-XX-7s5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1996" y="1710"/>
         </scene>
     </scenes>
     <resources>

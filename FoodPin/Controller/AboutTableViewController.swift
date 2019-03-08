@@ -11,7 +11,7 @@ import UIKit
 class AboutTableViewController: UITableViewController {
     
     var sectionTitles = ["Feedback", "Follow Us"]
-    var sectionContent = [[(image: "store", text: "Rate Us On App Store", link: "https://www.apple.com/itunes/charts/paid-apps/"), (image: "chat", text: "Tell us your feedback", link: "http://www.appcoda.com/contact")], [(image: "twitter", text: "Twitter", link: "https://twitter.com/thecomedystore"), (image: "facebook", text: "Facebook" , link: "https://www.facebook.com/TheComedyStore/"), (image: "instagram", text: "Instagram", link: "https://www.instagram.com/thecomedystore/?hl=en") ]]
+    var sectionContent = [[(image: "store", text: "Rate Us On App Store", link: "https://www.apple.com/itunes/charts/paid-apps/"), (image: "chat", text: "Tell us your feedback", link: "https://www.instagram.com/thecomedystore/?hl=en")], [(image: "twitter", text: "Twitter", link: "https://twitter.com/thecomedystore"), (image: "facebook", text: "Facebook" , link: "https://www.facebook.com/TheComedyStore/"), (image: "instagram", text: "Instagram", link: "https://www.instagram.com/thecomedystore/?hl=en") ]]
     
     
     override func viewDidLoad() {
@@ -69,6 +69,8 @@ class AboutTableViewController: UITableViewController {
                 if let url = URL(string: link) {
                     UIApplication.shared.open(url)
                 }
+            } else if (indexPath.row == 1) {
+                performSegue(withIdentifier: "showWebView", sender: self)
             }
         default:
             break
@@ -76,6 +78,15 @@ class AboutTableViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showWebView" {
+            if let destinationVC = segue.destination as? WebViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                    destinationVC.targetURL = sectionContent[indexPath.section][indexPath.row].link
+            }
+        }
     }
     
     
