@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Customizing Back Button
         let backButtonImage = UIImage(named: "back")
         UINavigationBar.appearance().backIndicatorImage = backButtonImage
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage 
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
         
         
         //Customizing Tab Bar
