@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class AboutTableViewController: UITableViewController {
     
@@ -64,6 +65,7 @@ class AboutTableViewController: UITableViewController {
         let link = sectionContent[indexPath.section][indexPath.row].link
         
         switch indexPath.section {
+        //Feedback section
         case 0:
             if indexPath.row == 0 {
                 if let url = URL(string: link) {
@@ -72,11 +74,17 @@ class AboutTableViewController: UITableViewController {
             } else if (indexPath.row == 1) {
                 performSegue(withIdentifier: "showWebView", sender: self)
             }
+        //Follow Us/Social Media Section
+        case 1:
+            if let url = URL(string: link) {
+                let safariController = SFSafariViewController(url: url)
+                present(safariController, animated: true, completion: nil)
+            }
         default:
             break
         }
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
         
     }
     
