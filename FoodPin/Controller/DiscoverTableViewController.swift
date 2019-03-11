@@ -38,22 +38,33 @@ class DiscoverTableViewController: UITableViewController {
         let publicDatabase = cloudContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
-        publicDatabase.perform(query, inZoneWith: nil) { (results, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            if let results = results {
-                print("We have completed the downloading of the Restaurant Data")
-                self.restaurants = results
-                
-                //Will reload the icloud Table Data on main thread
-                DispatchQueue.main.sync {
-                    self.tableView.reloadData()
-                }
-            }
+        
+        //Creating the quesry option using operational API
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.queuePriority = .veryHigh
+        queryOperation.resultsLimit = 50
+        queryOperation.recordFetchedBlock = { (record) -> Void in
+            self.restaurants.append(record)
         }
+        
+        
+//        publicDatabase.perform(query, inZoneWith: nil) { (results, error) in
+//            if let error = error {
+//                print(error)
+//                return
+//            }
+//
+//            if let results = results {
+//                print("We have completed the downloading of the Restaurant Data")
+//                self.restaurants = results
+//
+//                //Will reload the icloud Table Data on main thread
+//                DispatchQueue.main.sync {
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
     }
     
     //Assigning Fetched Data to Discover Table Cells
