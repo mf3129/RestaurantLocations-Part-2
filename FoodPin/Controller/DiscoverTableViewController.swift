@@ -48,6 +48,18 @@ class DiscoverTableViewController: UITableViewController {
             self.restaurants.append(record)
         }
         
+        queryOperation.queryCompletionBlock = {[unowned self] (cursor, error) -> Void in
+            if let error = error {
+                print("We have failed to get the data from iCloud Database")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        
+        }
+        
+        //Executing the Query
+        publicDatabase.add(queryOperation)
         
 //        publicDatabase.perform(query, inZoneWith: nil) { (results, error) in
 //            if let error = error {
