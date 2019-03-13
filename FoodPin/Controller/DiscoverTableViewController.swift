@@ -14,10 +14,6 @@ class DiscoverTableViewController: UITableViewController {
     var restaurants: [CKRecord] = []
     var spinner = UIActivityIndicatorView()
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,7 +57,7 @@ class DiscoverTableViewController: UITableViewController {
         
         //Creating the quesry option using operational API
         let queryOperation = CKQueryOperation(query: query)
-        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.desiredKeys = ["name"]
         queryOperation.queuePriority = .veryHigh
         queryOperation.resultsLimit = 50
         queryOperation.recordFetchedBlock = { (record) -> Void in
@@ -109,14 +105,33 @@ class DiscoverTableViewController: UITableViewController {
         let restaurant = restaurants[indexPath.row]
         cell.textLabel?.text = restaurant.object(forKey: "name") as? String
         
-        if let image = restaurant.object(forKey: "image"), let imageAsset = image as? CKAsset {
-            
-            if let imageData = try? Data.init(contentsOf: imageAsset.fileURL){
-                cell.imageView?.image = UIImage(data: imageData)
+        //Setting the default image
+        cell.imageView?.image = UIImage(named: "photo")
+        
+        //Fetehing the image fromm the Cloud Database in the background
+        let publicDatabase = CKContainer.default().publicCloudDatabase
+        let fetchRecordsImageOperations = CKFetchRecordsOperation(recordIDs: [restaurant.recordID])
+        fetchRecordsImageOperations.desiredKeys = ["image"]
+        fetchRecordsImageOperations.queuePriority = .veryHigh
+        
+        fetchRecordsImageOperations.perRecordCompletionBlock = { [unowned self] (record, recordID, error) -> Void in
+            if let error = error {
+                    print("We have failed to obtain the record from the database.")
+                }
+        
+            if let restaurantRecord = record,
+            let image = restaurantRecord.object(forKey: "image"),
+            let imageAsset = image as? CKAsset {
+                if let imageData = try? Data.init(contentsOf: imageAsset.fileURL){
+                    DispatchQueue.main.async {
+                        cell.imageView?.image = UIImage(data: imageData)
+                        cell.setNeedsLayout()
+                    }
+                }
             }
         }
-        
-        return cell
+            publicDatabase.add(fetchRecordsImageOperations)
+            return cell
     }
 
     // MARK: - Table view data source
