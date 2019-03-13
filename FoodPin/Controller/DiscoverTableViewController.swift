@@ -12,9 +12,29 @@ import CloudKit
 class DiscoverTableViewController: UITableViewController {
 
     var restaurants: [CKRecord] = []
+    var spinner = UIActivityIndicatorView()
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Activity Spinner Styling
+        spinner.style = .gray
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        
+        //Definiing the Spinner layout constraints
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
+                 spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        //Activating The Spinner
+        spinner.startAnimating()
+        
         
         tableView.cellLayoutMarginsFollowReadableWidth = true
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -53,6 +73,7 @@ class DiscoverTableViewController: UITableViewController {
                 print("We have failed to get the data from iCloud Database")
             }
             DispatchQueue.main.async {
+                self.spinner.stopAnimating()
                 self.tableView.reloadData()
             }
         
