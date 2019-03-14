@@ -33,6 +33,13 @@ class DiscoverTableViewController: UITableViewController {
         //Activating The Spinner
         spinner.startAnimating()
         
+        //Pull To Refresh Control
+        refreshControl = UIRefreshControl()
+        refreshControl?.backgroundColor = UIColor.white
+        refreshControl?.tintColor = UIColor.gray
+        refreshControl?.addTarget(self, action: #selector(fetchRecordsFromCloud), for: UIControl.Event.valueChanged)
+        
+        
         
         tableView.cellLayoutMarginsFollowReadableWidth = true
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -50,7 +57,11 @@ class DiscoverTableViewController: UITableViewController {
     
     
     //Fetching Data From ICloud Database using convenience API
-    func fetchRecordsFromCloud(){
+    @objc func fetchRecordsFromCloud(){
+        
+        //Removing records before refreshing
+        restaurants.removeAll()
+        tableView.reloadData()
         
         let cloudContainer = CKContainer.default()
         let publicDatabase = cloudContainer.publicCloudDatabase
@@ -73,6 +84,12 @@ class DiscoverTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.spinner.stopAnimating()
                 self.tableView.reloadData()
+            }
+            
+            if let refreshControl = self.refreshControl {
+                if refreshControl.isRefreshing {
+                    refreshControl.endRefreshing()
+                }
             }
         
         }
@@ -137,6 +154,7 @@ class DiscoverTableViewController: UITableViewController {
                         cell.imageView?.image = UIImage(data: imageData)
                         cell.setNeedsLayout()
                         }
+                    self.imageCache.setObject(imageAsset.fileURL as NSURL, forKey: restaurant.recordID)
                     }
                 }
             }
