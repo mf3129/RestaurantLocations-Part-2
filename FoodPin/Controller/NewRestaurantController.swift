@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import CloudKit
+
 
 class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -95,7 +97,10 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
             
                 print("Saving data to context...")
                 appDelegate.saveContext()
-               
+                
+                //Calling the save method to iCloud 
+                saveRecordToCloud(restaurant: restaurant)
+                
                 dismiss(animated: true, completion: nil)
             
 //            //Hard Coded Database | Pre-Core Data
@@ -107,8 +112,6 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
             }
         }
     }
-    
-
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             if let nextTextField = view.viewWithTag(textField.tag + 1) {
@@ -195,66 +198,44 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
         dismiss(animated: true, completion: nil)
     }
     
+    
+    func saveRecordToCloud(restaurant: RestaurantMO!) -> Void {
+       
+        //Preparing To Save The Record
+        let record = CKRecord(recordType: "Restaurant")
+        record.setValue(restaurant.name, forKey: "name")
+        record.setValue(restaurant.type, forKey: "type")
+        record.setValue(restaurant.location, forKey: "location")
+        record.setValue(restaurant.phone, forKey: "phone")
+        record.setValue(restaurant.summary, forKey: "description")
+        
+        let imageData = restaurant.image! as Data
+        
+        //Resizing the image
+        let originalImage = UIImage(data: imageData)!
+        let scalingFactor = (originalImage.size.width > 1024) ? 1024 / originalImage.size.width : 1.0
+        let scaledImage = UIImage(data: imageData, scale: scalingFactor)!
+        
+        
+        //Write image to local file
+        let imageFilePath = NSTemporaryDirectory() + restaurant.name!
+        let imageFileURL = URL(fileURLWithPath: imageFilePath)
+        try? scaledImage.jpegData(compressionQuality: 0.8)?.write(to: imageFileURL)
+        
+        
+        //Creating image assets for uploading
+        let imageAsset = CKAsset(fileURL: imageFileURL)
+        record.setValue(imageAsset, forKey: "image")
+        
+        //Get the Public Database
+        let publicDatabase = CKContainer.default().publicCloudDatabase
+        
+        //Saving Record To iCloud
+        publicDatabase.save(record) { (record, error) in
+            try? FileManager.default.removeItem(at: imageFileURL)
+        }
 
-    
-    
-    
-    
+    }
+
 }
-    
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 
