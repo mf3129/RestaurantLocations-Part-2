@@ -14,6 +14,9 @@ class DiscoverTableViewController: UITableViewController {
     var restaurants: [CKRecord] = []
     var spinner = UIActivityIndicatorView()
 
+    @IBOutlet weak var mainImageView: UIImageView!
+    
+    
     private var imageCache = NSCache<CKRecord.ID, NSURL>()
     
     override func viewDidLoad() {
