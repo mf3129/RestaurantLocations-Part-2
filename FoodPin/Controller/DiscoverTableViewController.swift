@@ -67,6 +67,7 @@ class DiscoverTableViewController: UITableViewController {
         let publicDatabase = cloudContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
         //Creating the quesry option using operational API
         let queryOperation = CKQueryOperation(query: query)
@@ -84,13 +85,14 @@ class DiscoverTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.spinner.stopAnimating()
                 self.tableView.reloadData()
-            }
-            
-            if let refreshControl = self.refreshControl {
-                if refreshControl.isRefreshing {
-                    refreshControl.endRefreshing()
+                
+                if let refreshControl = self.refreshControl {
+                    if refreshControl.isRefreshing {
+                        refreshControl.endRefreshing()
+                    }
                 }
             }
+            
         
         }
         

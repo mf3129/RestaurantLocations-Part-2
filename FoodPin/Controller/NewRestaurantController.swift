@@ -228,11 +228,18 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
         record.setValue(imageAsset, forKey: "image")
         
         //Get the Public Database
+        //let customContainer = CKContainer(identifier: "iCloud.com.MakanFofana.FoodPin")
+        
         let publicDatabase = CKContainer.default().publicCloudDatabase
         
         //Saving Record To iCloud
         publicDatabase.save(record) { (record, error) in
             try? FileManager.default.removeItem(at: imageFileURL)
+            guard let record = record else {
+                print("Error saving record: ", error)
+                return
+            }
+            print("Successfully saved record: ", record)
         }
 
     }
