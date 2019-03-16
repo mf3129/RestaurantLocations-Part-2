@@ -69,9 +69,9 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
         
         if (nameTextField.text == "" || typeTextField.text == "" || addressTextField.text == "" || phoneTextField.text == "" || descriptionTextView.text == "" ){
             
-            let ErrorController = UIAlertController(title: "Ayyyeee", message: "You forgot to enter text for one or more fields.", preferredStyle: .alert)
+            let ErrorController = UIAlertController(title: NSLocalizedString("Hello", comment: "Hello") , message: NSLocalizedString("You forgot to enter text for one or more fields.", comment: "You forgot to enter text for one or more fields."), preferredStyle: .alert)
             
-            let errorAlert = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            let errorAlert = UIAlertAction(title: NSLocalizedString("Okay", comment: "Okay"), style: .cancel, handler: nil)
             
             ErrorController.addAction(errorAlert)
             
@@ -128,10 +128,10 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
         
         if indexPath.row == 0 {
             
-            let photoSourceRequestController = UIAlertController(title: "", message: "Choose your photo source", preferredStyle: .actionSheet)
+            let photoSourceRequestController = UIAlertController(title: "", message: NSLocalizedString("Choose your photo source", comment: "Choose your photo source"), preferredStyle: .actionSheet)
             
             
-            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+            let cameraAction = UIAlertAction(title: NSLocalizedString("Camera", comment: "Camera"), style: .default) { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     let imagePicker = UIImagePickerController()
                     imagePicker.delegate = self
@@ -143,7 +143,7 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
             }
             
             
-            let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+            let photoLibraryAction = UIAlertAction(title: NSLocalizedString("Photo Library", comment: "Photo Library"), style: .default) { (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                     let imagePicker = UIImagePickerController()
                     imagePicker.delegate = self
