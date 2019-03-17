@@ -1,0 +1,12 @@
+/* Class = "UILabel"; text = "Type"; ObjectID = "aaM-3S-454"; */
+"aaM-3S-454.text" = "類別";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "dHI-Ro-LfK"; */
+"dHI-Ro-LfK.text" = "餐廳名";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "GfT-ce-Ajp"; */
+"GfT-ce-Ajp.text" = "地址";
+
+/* Class = "UINavigationItem"; title = "FoodPin"; ObjectID = "P4T-aW-PpF"; */
+"P4T-aW-PpF.title" = "FoodPin";
+
