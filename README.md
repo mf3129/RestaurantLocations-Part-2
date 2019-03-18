@@ -4,12 +4,16 @@ An App Project For Local Stores In The Area. Using This App as a template for a 
 
 
 
+#
+#
 
 Steps to run the 📱 app:
 
 1. Open Terminal
 2. Change directory to where you want to clone the file
 3. Type git clone https://github.com/mf3129/RestaurantLocations-Part-2.git
+#
+#
 
 OR download the zip file
 
